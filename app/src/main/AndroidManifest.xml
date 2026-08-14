@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE"/>
+
+    <!-- Internet permission required for ML Kit model download (one-time, ~5MB) -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- ✅ FIX: required on Android 13+ (API 33) for foreground service
+         notifications (FloatingService / WakeWordService) to actually show -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <!-- App visibility (Android 11+) -->
+    <queries>
+
+        <!-- Browsers / URLs -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="http" />
+        </intent>
+
+        <!-- YouTube -->
+        <package android:name="com.google.android.youtube"/>
+
+        <!-- Instagram -->
+        <package android:name="com.instagram.android"/>
+
+        <!-- Chrome -->
+        <package android:name="com.android.chrome"/>
+
+        <!-- Photos / Gallery -->
+        <package android:name="com.google.android.apps.photos"/>
+
+        <!-- WhatsApp -->
+        <package android:name="com.whatsapp"/>
+        <package android:name="com.whatsapp.w4b"/>
+
+        <!-- Spotify / YouTube Music (used by VoiceCommandActivity.playMusic) -->
+        <package android:name="com.spotify.music"/>
+        <package android:name="com.google.android.apps.youtube.music"/>
+
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SmartVoiceAssistant">
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Voice Command Activity -->
+        <activity
+            android:name=".VoiceCommandActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <!-- Floating Mic Service -->
+        <service
+            android:name=".FloatingService"
+            android:exported="false"
+            android:foregroundServiceType="microphone"/>
+
+        <!-- Wake Word Service -->
+        <service
+            android:name=".WakeWordService"
+            android:exported="false"
+            android:foregroundServiceType="microphone"/>
+
+        <!-- ML Kit Entity Extraction model metadata -->
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="ner"/>
+
+    </application>
+
+</manifest>

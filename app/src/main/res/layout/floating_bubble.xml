@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- floating_bubble.xml -->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="70dp"
+    android:layout_height="70dp">
+
+    <!-- Outer pulse ring -->
+    <View
+        android:id="@+id/outerRing"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/bubble_outer_ring"
+        android:layout_gravity="center"/>
+
+    <!-- Main bubble background -->
+    <ImageView
+        android:id="@+id/btnMic"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:src="@drawable/ic_mic"
+        android:background="@drawable/bubble_bg"
+        android:padding="14dp"
+        android:layout_gravity="center"
+        android:elevation="6dp"
+        android:tint="#00E5FF"/>
+
+</FrameLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_dark">#050A14</color>
+    <color name="surface_dark">#0D1520</color>
+    <color name="accent_cyan">#00E5FF</color>
+    <color name="accent_cyan_dim">#4D00E5FF</color>
+    <color name="accent_cyan_20">#3300E5FF</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#80FFFFFF</color>
+    <color name="divider">#1AFFFFFF</color>
+</resources>
